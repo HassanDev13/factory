@@ -1,6 +1,10 @@
 {
-    "Index": {
-      "title": "Hello world!"
+  "Index": {
+    "title": "Hello world!",
+    "body": {
+      "p": "This is a test of the new CMS.",
+      "p2": "This is a test of the new CMS.",
+      "find-in-depth-information-about-next-js-features-and-api": "Find in-depth information about Next.js features and API."
     }
   }
-  
+ }

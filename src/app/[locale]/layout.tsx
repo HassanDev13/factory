@@ -12,15 +12,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params: {locale}
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
-  params: {locale: string};
+  params: { locale: string };
 }>) {
+  let direction = locale === "ar" ? "rtl" : "ltr";
+  let font = locale === "ar" ? cairo.className : inter.className;
+ 
   return (
     <ReactQueryClientProvider>
-      <html lang={locale}>
-        <body className={cairo.className}>{children}</body>
+    
+      <html lang={locale} dir={direction} >
+        <body className={`${direction} ${font}`}>{children}</body>
       </html>
     </ReactQueryClientProvider>
   );

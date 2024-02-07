@@ -1,5 +1,8 @@
 {
-    "Index": {
-      "title": "مرحبا بالعالم"
+  "Index": {
+    "title": "مرحبا بالعالم",
+    "body": {
+      "find-in-depth-information-about-next-js-features-and-api": "احصل على معلومات متعمقة حول ميزات Next.js وواجهة برمجة التطبيقات."
     }
   }
+}
