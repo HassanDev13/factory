@@ -1,7 +1,12 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware';
+ 
+import {pathnames, locales, localePrefix} from './config';
 
 export async function middleware(request: NextRequest) {
+  const {pathname} = request.nextUrl;
+ 
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -54,20 +59,28 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  await supabase.auth.getUser()
+  const user = await supabase.auth.getUser()
+  const shouldHandle =
+  pathname === '/' ||
+  new RegExp(`^/(${locales.join('|')})(/.*)?$`).test(
+    request.nextUrl.pathname
+  );
+if (!shouldHandle) return;
 
-  return response
+return intlMiddleware(request);
 }
+
+const intlMiddleware=  createMiddleware({
+  defaultLocale: 'en',
+  locales,
+  pathnames,
+  localePrefix
+});
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * Feel free to modify this pattern to include more paths.
-     */
+ 
     '/((?!_next/static|_next/image|favicon.ico).*)',
+  
   ],
 }
