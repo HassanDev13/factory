@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cairo, Inter } from "next/font/google";
 import "./globals.css";
 import { ReactQueryClientProvider } from "./queryClientProvider";
-import useTextDirection from "@/useTextDirection";
+import useTextDirection from "@/components/useTextDirection";
 
 const inter = Inter({ subsets: ["latin"] });
 const cairo = Cairo({ subsets: ["latin"] });
