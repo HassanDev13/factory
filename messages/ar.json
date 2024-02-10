@@ -2,7 +2,24 @@
   "Index": {
     "title": "مرحبا بالعالم",
     "body": {
-      "find-in-depth-information-about-next-js-features-and-api": "احصل على معلومات متعمقة حول ميزات Next.js وواجهة برمجة التطبيقات."
+      "find-in-depth-information-about-next-js-features-and-api": "ابحث عن معلومات مفصلة حول ميزات Next.js وAPI.",
+      "learn-about-next-js-in-an-interactive-course-with-and-nbsp-quizzes": "تعلم عن Next.js في دورة تفاعلية مع الاختبارات!",
+      "explore-starter-templates-for-next-js": "استكشف قوالب البداية لـ Next.js.",
+      "instantly-deploy-your-next-js-site-to-a-shareable-url-with-vercel": "قم بنشر موقع Next.js الخاص بك على URL قابل للمشاركة على الفور مع Vercel.",
+      "deploy": "نشر",
+      "noopener-noreferrer-3": "noopener noreferrer",
+      "templates": "القوالب",
+      "noopener-noreferrer-2": "noopener noreferrer",
+      "learn": "تعلم",
+      "noopener-noreferrer-1": "noopener noreferrer",
+      "noopener-noreferrer-0": "noopener noreferrer",
+      "next-js-logo": "شعار Next.js",
+      "vercel-logo": "شعار Vercel",
+      "by": "بواسطة",
+      "noopener-noreferrer": "noopener noreferrer",
+      "get-started-by-editing-and-nbsp": "ابدأ بالتحرير&nbsp;",
+      "index": "الفهرس"
     }
-  }
+  },
+  "lets-go": "دعنا نذهب"
 }

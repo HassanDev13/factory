@@ -4,7 +4,24 @@
     "body": {
       "p": "This is a test of the new CMS.",
       "p2": "This is a test of the new CMS.",
-      "find-in-depth-information-about-next-js-features-and-api": "Find in-depth information about Next.js features and API."
+      "find-in-depth-information-about-next-js-features-and-api": "Find in-depth information about Next.js features and API.",
+      "learn-about-next-js-in-an-interactive-course-with-and-nbsp-quizzes": "Learn about Next.js in an interactive course with&nbsp;quizzes!",
+      "explore-starter-templates-for-next-js": "Explore starter templates for Next.js.",
+      "instantly-deploy-your-next-js-site-to-a-shareable-url-with-vercel": "Instantly deploy your Next.js site to a shareable URL with Vercel.",
+      "deploy": "Deploy",
+      "noopener-noreferrer-3": "noopener noreferrer",
+      "templates": "Templates",
+      "noopener-noreferrer-2": "noopener noreferrer",
+      "learn": "Learn",
+      "noopener-noreferrer-1": "noopener noreferrer",
+      "noopener-noreferrer-0": "noopener noreferrer",
+      "next-js-logo": "Next.js Logo",
+      "vercel-logo": "Vercel Logo",
+      "by": "By",
+      "noopener-noreferrer": "noopener noreferrer",
+      "get-started-by-editing-and-nbsp": "Get started by editing&nbsp;",
+      "index": "Index"
     }
-  }
- }
+  },
+  "lets-go": "lets go"
+}

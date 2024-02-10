@@ -2,7 +2,7 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware';
  
-import {pathnames, locales, localePrefix} from './config';
+import {pathnames, locales, localePrefix} from './config/config';
 
 export async function middleware(request: NextRequest) {
   const {pathname} = request.nextUrl;
@@ -80,7 +80,7 @@ const intlMiddleware=  createMiddleware({
 export const config = {
   matcher: [
  
-    '/((?!_next/static|_next/image|favicon.ico).*)',
+    '/((?!_next/static|_next/image).*)',
   
   ],
 }
