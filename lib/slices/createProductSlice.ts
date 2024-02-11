@@ -12,11 +12,13 @@ export interface Product {
     price: number;
     title: string;
     quantity?: number;
+    
 }
 
 export interface ProductSlice {
     products: Product[];
     fetchProducts: () => void;
+
 }
 
 export const createProductSlice: StateCreator<ProductSlice> = (set) => ({

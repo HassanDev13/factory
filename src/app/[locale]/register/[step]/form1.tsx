@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 type content = {
   email: string;
@@ -98,11 +99,11 @@ const Form1 = ({ params: { locale, step, content } }: Props) => {
     let stepCu = Number(step) + 1;
     router.push(`/${locale}/register/${stepCu}`);
   }
-  
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-        <div className="md:flex w-[100%] md:justify-between md:space-x-4 space-y-5 md:space-y-0 rtl:space-x-reverse">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 ">
+        <div className="md:flex w-full  md:justify-between md:space-x-4 space-y-5 md:space-y-0 rtl:space-x-reverse">
           <FormField
             control={form.control}
             name="first_name"
@@ -141,6 +142,8 @@ const Form1 = ({ params: { locale, step, content } }: Props) => {
               </FormItem>
             )}
           />
+        </div>
+        <div className="md:flex w-full md:justify-between md:space-x-4 space-y-5 md:space-y-0 rtl:space-x-reverse">
           <FormField
             control={form.control}
             name="email"
@@ -159,8 +162,6 @@ const Form1 = ({ params: { locale, step, content } }: Props) => {
               </FormItem>
             )}
           />
-        </div>
-        <div className="md:flex w-full md:justify-between md:space-x-4 space-y-5 md:space-y-0 rtl:space-x-reverse">
           <FormField
             control={form.control}
             name="gender"
@@ -187,6 +188,9 @@ const Form1 = ({ params: { locale, step, content } }: Props) => {
               </FormItem>
             )}
           />
+        </div>
+
+        <div className="md:flex w-full md:justify-between md:space-x-4 space-y-5 md:space-y-0 rtl:space-x-reverse">
           <FormField
             control={form.control}
             name="password"
@@ -228,19 +232,12 @@ const Form1 = ({ params: { locale, step, content } }: Props) => {
           />
         </div>
 
-        <div className="md:flex w-full md:justify-between md:space-x-4 space-y-5 md:space-y-0 rtl:space-x-reverse"></div>
-
-        <div className="flex justify-between">
+        <div className="flex items-center justify-center">
           <Button
-            disabled={Number(step) == 1}
-            className="bg-[#FFE7C2] w-32 text-foreground"
-            onClick={() => {
-              back();
-            }}
+            type="submit"
+            className="bg-[#0F172A] w-32 hover:bg-[#FFE7C2] hover:text-[#0F172A]"
           >
-            {content.back}
-          </Button>
-          <Button type="submit" className="bg-[#0F172A] w-32">
+            <ReloadIcon className="mr-2 h-4 w-4 animate-spin  hover:text-[#0F172A]" />
             {Number(step) == 3 ? `${content.go}` : `${content.next}`}
           </Button>
         </div>
