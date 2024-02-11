@@ -5,12 +5,7 @@ CREATE TABLE users (
     email VARCHAR(255),
     password VARCHAR(255),
     gender user_gender,
-    status user_status,
-    facebook VARCHAR(255),
-    instagram VARCHAR(255),
-    github VARCHAR(255),
-    linkedin VARCHAR(255),
-    phone_number VARCHAR(20),
+    status user_status DEFAULT 'active',
     country_id INT REFERENCES country(id),
     primary key (user_id)
 );

@@ -1,6 +1,12 @@
 -- Insert sample data into time_zone table
 
 INSERT INTO
+    country (name, soft_delete)
+VALUES ('Algeria', FALSE),
+    ('Maroc', FALSE),
+    ('Tunisia', FALSE);
+
+INSERT INTO
     auth.users (
         instance_id,
         id,
@@ -31,7 +37,13 @@ INSERT INTO
             current_timestamp,
             current_timestamp,
             '{"provider":"email","providers":["email"]}',
-            '{}',
+            jsonb_build_object(
+            'first_name', 'Reda',
+            'last_name', 'Taleb',
+            'email', 'user@example.com',
+            'gender', 'men',
+            'country_id', 1
+            ), 
             current_timestamp,
             current_timestamp,
             '',
@@ -110,11 +122,7 @@ VALUES ('Tag 1', FALSE),
     ('Tag 3', FALSE);
 
 -- Insert sample data into country table
-INSERT INTO
-    country (name, soft_delete)
-VALUES ('Country 1', FALSE),
-    ('Country 2', FALSE),
-    ('Country 3', FALSE);
+
 
 -- Insert sample data into users table
 -- Insert sample data into users table
@@ -133,7 +141,7 @@ VALUES (
     (
         'Team 3', 7, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, FALSE
     );
-    
+
 INSERT INTO
     initiative (
         name, description, invitation_link_channel, announcement_date, start_management_date, end_management_date, open_registrations_date, close_registrations_date, launch_date, end_execution_date, for_gender, status, type_initiative_id, image_id, timezone_id, team_id, soft_delete
