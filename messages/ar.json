@@ -21,5 +21,39 @@
       "index": "الفهرس"
     }
   },
-  "lets-go": "دعنا نذهب"
+  "lets-go": "دعنا نذهب",
+  "Register": {
+    "lets-start": "لنبدأ",
+    "initiative": "مبادرة",
+    "this-is-where-leaders-graduate": "- هنا يتخرج القادة",
+    "the-journey": "الرحلة",
+    "password": "كلمة المرور",
+    "email": "بريد إلكتروني",
+    "confirm-password": "تأكيد كلمة المرور",
+    "first-name-0": "الاسم الأول",
+    "last-name-0": "اسم العائلة",
+    "gender": "جنس",
+    "email-0": "بريد إلكتروني",
+    "confirm-password-0": "تأكيد كلمة المرور",
+    "first-name-1": "الاسم الأول",
+    "last-name-1": "اسم العائلة",
+    "gender-0": "جنس",
+    "email-not-provides": "البريد الإلكتروني لا يوفر",
+    "password-not-provides": "كلمة المرور لا توفر",
+    "confirm-password-not-provides": "تأكيد كلمة المرور لا يوفر",
+    "first-name-not-provides": "الاسم الأول لا يوفر",
+    "last-name-not-provides": "الاسم الأخير لا يوفر",
+    "gender-not-provides": "الجنس لا يوفر",
+    "back": "خلف",
+    "next": "التالي",
+    "go": "يذهب",
+    "register": "يسجل",
+    "create-your-account": "أنشئ حسابك",
+    "already-have-account": "لديك حساب بالفعل؟",
+    "click-here": "انقر هنا"
+  },
+  "register": "يسجل",
+  "create-your-account": "أنشئ حسابك",
+  "already-have-account": "لديك حساب بالفعل؟",
+  "click-here": "انقر هنا"
 }
