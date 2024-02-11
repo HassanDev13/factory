@@ -1,0 +1,4 @@
+CREATE TABLE image (
+    id SERIAL PRIMARY KEY,
+    link VARCHAR(255)
+);
