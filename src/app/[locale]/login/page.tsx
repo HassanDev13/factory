@@ -1,123 +1,152 @@
+"use client";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import mobilefactory from "/mobilefactory.svg";
+import desktopFactory from "/desktopFactory.svg";
+import { useForm } from "react-hook-form";
+import { object, string } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-type Props = {
-  params: { locale: string };
-};
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
-export default function Home({ params: { locale } }: Props) {
-  unstable_setRequestLocale(locale);
-  const t = useTranslations();
+const schema = object({
+  email: string().email(),
+  password: string().min(6),
+});
+
+export default function Home() {
+  const [imageSrc, setImageSrc] = useState("/mobilefactory.svg");
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 768) {
+        // MD breakpoint or larger
+        setImageSrc("/desktopFactory.svg");
+      } else {
+        setImageSrc("/mobilefactory.svg");
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: object) => {
+    console.log(data);
+  };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          {t('Index.body.get-started-by-editing-and-nbsp')}
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-      <p>{t('lets-go')}</p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel={t('Index.body.noopener-noreferrer')}
-          >
-            {t('Index.body.by')}{" "}
-            <Image
-              src="/vercel.svg"
-              alt={t('Index.body.vercel-logo')}
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="flex flex-col md:flex-row max-sm:items-center md:h-screen md:w-screen max-sm:justify-center ">
+      <div className=" md:w-1/2 md:bg-dark-blue flex items-center justify-center">
+        <div className="mt-4 md:order-last md:w-auto ">
+          <Image
+            src={imageSrc}
+            className=""
+            alt="factory"
+            width={300}
+            height={300}
+          />
+          <div className="text-center mt-4">
+            <p className="text-md md:text-costum-cream">
+              <b>Factory-</b> In a mission to build a community
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt={t('Index.body.next-js-logo')}
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="flex flex-col items-center justify-center md:order-first md:w-1/2 ">
+        <Card className="border-none md:w-[60%]">
+          <CardHeader>
+            <p className="md:text-3xl max-sm:mt-">
+              Welcome <b className="md:hidden">Back</b>
+            </p>
+            <CardTitle className="md:text-4xl max-sm:hidden ">Back</CardTitle>
+            <CardDescription className="md:hidden">
+              Enter your email below to create your account.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  {...register("email")}
+                  className="bg-white"
+                  id="email"
+                  placeholder="Email"
+                />
+                {errors.email && <p>{errors.email.message?.toString()}</p>}
+                <Label className="text-custom-gray" htmlFor="email">
+                  Enter your email address
+                </Label>
+              </div>
+              <div className="mt-4">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  type="password"
+                  {...register("password")}
+                  className="bg-white"
+                  id="password"
+                  placeholder="Password"
+                />
+                {errors.password && (
+                  <p>{errors.password.message?.toString()}</p>
+                )}
+                <Label className="text-custom-gray" htmlFor="password">
+                  Enter your password
+                </Label>
+              </div>
+              <Button type="submit" className="w-full mt-[7%] bg-blue-950">
+                Login
+              </Button>
+            </form>
+          </CardContent>
+          <CardFooter>
+            <Label
+              className="text-custom-gray ml-[5%] md:ml-[8%] text-lg"
+              htmlFor="redirectRegister"
+            >
+              Already have an account?{" "}
+              <Link className="text-custom-gray font-bold" href="#">
+                Click here
+              </Link>
+            </Label>
+          </CardFooter>
+        </Card>
+        <div>
+          <footer className="text-custom-gray text-sm mt-8 text-center">
+            <p className="">
+              {" "}
+              <b className="font-bold">مبادرة-</b>هنا يتخرج القادة{" "}
+            </p>
+            <p>
+              <b className="font-bold">Initiative -</b> This is where leaders
+              graduate
+            </p>
+          </footer>
+        </div>
       </div>
-
-      <div className="mb-32 grid  lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 ">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel={t('Index.body.noopener-noreferrer-0')}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            {t('Index.body.find-in-depth-information-about-next-js-features-and-api')}
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel={t('Index.body.noopener-noreferrer-1')}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            {t('Index.body.learn')}{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            {t('Index.body.learn-about-next-js-in-an-interactive-course-with-and-nbsp-quizzes')}
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel={t('Index.body.noopener-noreferrer-2')}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            {t('Index.body.templates')}{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            {t('Index.body.explore-starter-templates-for-next-js')}
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel={t('Index.body.noopener-noreferrer-3')}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            {t('Index.body.deploy')}{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            {t('Index.body.instantly-deploy-your-next-js-site-to-a-shareable-url-with-vercel')}
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }

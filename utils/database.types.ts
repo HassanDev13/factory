@@ -1,4 +1,3 @@
-
 export type Json =
   | string
   | number
@@ -7,7 +6,7 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-export type Database = {
+export interface Database {
   public: {
     Tables: {
       country: {
@@ -535,45 +534,30 @@ export type Database = {
         Row: {
           country_id: number | null
           email: string | null
-          facebook: string | null
           first_name: string | null
           gender: Database["public"]["Enums"]["user_gender"] | null
-          github: string | null
-          instagram: string | null
           last_name: string | null
-          linkedin: string | null
           password: string | null
-          phone_number: string | null
           status: Database["public"]["Enums"]["user_status"] | null
           user_id: string
         }
         Insert: {
           country_id?: number | null
           email?: string | null
-          facebook?: string | null
           first_name?: string | null
           gender?: Database["public"]["Enums"]["user_gender"] | null
-          github?: string | null
-          instagram?: string | null
           last_name?: string | null
-          linkedin?: string | null
           password?: string | null
-          phone_number?: string | null
           status?: Database["public"]["Enums"]["user_status"] | null
           user_id: string
         }
         Update: {
           country_id?: number | null
           email?: string | null
-          facebook?: string | null
           first_name?: string | null
           gender?: Database["public"]["Enums"]["user_gender"] | null
-          github?: string | null
-          instagram?: string | null
           last_name?: string | null
-          linkedin?: string | null
           password?: string | null
-          phone_number?: string | null
           status?: Database["public"]["Enums"]["user_status"] | null
           user_id?: string
         }
@@ -602,7 +586,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      initiative_for_gender: "men" | "women" | "mix"
+      initiative_for_gender: "men" | "female" | "mix"
       initiative_status:
         | "announcement"
         | "preparing"
@@ -612,8 +596,8 @@ export type Database = {
         | "completed"
         | "postponed"
       notification_status: "read" | "unread"
-      task_initiative_status: "solved" | "unsolved" | "pending"
-      user_gender: "men" | "women"
+      task_initiative_status: "solve" | "unsolved" | "pending"
+      user_gender: "men" | "female"
       user_initiative_status: "pending" | "accepted" | "refused"
       user_status: "active" | "deactivate"
     }
@@ -702,3 +686,4 @@ export type Enums<
   : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
   ? Database["public"]["Enums"][PublicEnumNameOrOptions]
   : never
+
