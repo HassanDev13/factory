@@ -18,13 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-  let font = locale === "ar" ? cairo.className : inter.className;
-  const direction = useTextDirection(locale);
+ 
   return (
     <ReactQueryClientProvider>
-      <html lang={locale} dir={direction} >
-        <body className={`${font}`}>{children}</body>
-      </html>
+      <main>{children}</main>
     </ReactQueryClientProvider>
   );
 }
