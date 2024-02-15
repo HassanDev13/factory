@@ -50,6 +50,7 @@ INSERT INTO
 
 
 
+
 -- test user email identities
 INSERT INTO
     auth.identities (
@@ -75,11 +76,20 @@ INSERT INTO
             auth.users
     );
 
+ INSERT INTO public.roles (user_id,roles)
+    select 
+    id,
+    ARRAY['admin', 'supervisor', 'student']::role[]
+    from auth.users;
+
+
 INSERT INTO
     time_zone (zone)
 VALUES ('UTC'),
     ('GMT'),
     ('PST');
+--  admin', 'supervisor', 'student'
+
 
 -- Insert sample data into image table
 INSERT INTO

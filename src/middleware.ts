@@ -59,7 +59,9 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  const user = await supabase.auth.getUser()
+  const user = await supabase.auth.getSession
+
+
   const shouldHandle =
   pathname === '/' ||
   new RegExp(`^/(${locales.join('|')})(/.*)?$`).test(

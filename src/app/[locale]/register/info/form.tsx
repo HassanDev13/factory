@@ -47,8 +47,7 @@ type content = {
 type Props = {
   params: {
     locale: string;
-    content: content;
-    country : Tables<'country'>[] 
+    content: content; 
   };
 };
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -57,9 +56,12 @@ import { z } from "zod";
 import { toast } from "@/components/ui/use-toast";
 import createClient from "../../../../../utils/supabase/client";
 import { Tables } from "../../../../../utils/database.types";
+import { useQuery } from "@tanstack/react-query";
+import useGetAllCountries from "../../../../../hooks/country/use-all-countries";
 
 const Form1 = ({ params: { locale, content } }: Props) => {
   const client = createClient();
+  const { data: country, isLoading : countryLoading , isError } = useGetAllCountries();
   const formSchema = z.object({
     first_name: z.string().min(6, {
       message: content.error_message_first_name,
@@ -184,8 +186,13 @@ const Form1 = ({ params: { locale, content } }: Props) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="1">Algeria</SelectItem>
-                    <SelectItem value="2">Maroco</SelectItem>
+
+                    {country?.map((c) => (
+                      <SelectItem key={c.id} value={`${c.id}`}>
+                        {c.name}
+                      </SelectItem>
+                    ))}
+                  
                   </SelectContent>
                 </Select>
 

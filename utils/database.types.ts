@@ -234,6 +234,21 @@ export interface Database {
           }
         ]
       }
+      Roles: {
+        Row: {
+          roles: Database["public"]["Enums"]["role"][]
+          user_id: string
+        }
+        Insert: {
+          roles: Database["public"]["Enums"]["role"][]
+          user_id: string
+        }
+        Update: {
+          roles?: Database["public"]["Enums"]["role"][]
+          user_id?: string
+        }
+        Relationships: []
+      }
       tag: {
         Row: {
           id: number
@@ -583,7 +598,48 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      delete_claim: {
+        Args: {
+          uid: string
+          claim: string
+        }
+        Returns: string
+      }
+      get_claim: {
+        Args: {
+          uid: string
+          claim: string
+        }
+        Returns: Json
+      }
+      get_claims: {
+        Args: {
+          uid: string
+        }
+        Returns: Json
+      }
+      get_my_claim: {
+        Args: {
+          claim: string
+        }
+        Returns: Json
+      }
+      get_my_claims: {
+        Args: Record<PropertyKey, never>
+        Returns: Json
+      }
+      is_claims_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
+      set_claim: {
+        Args: {
+          uid: string
+          claim: string
+          value: Json
+        }
+        Returns: string
+      }
     }
     Enums: {
       initiative_for_gender: "men" | "female" | "mix"
@@ -596,6 +652,7 @@ export interface Database {
         | "completed"
         | "postponed"
       notification_status: "read" | "unread"
+      role: "admin" | "supervisor" | "student"
       task_initiative_status: "solve" | "unsolved" | "pending"
       user_gender: "men" | "female"
       user_initiative_status: "pending" | "accepted" | "refused"
