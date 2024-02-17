@@ -1,4 +1,3 @@
-
 export type Json =
   | string
   | number
@@ -7,7 +6,7 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-export type Database = {
+export interface Database {
   public: {
     Tables: {
       country: {
@@ -234,6 +233,21 @@ export type Database = {
             referencedColumns: ["user_id"]
           }
         ]
+      }
+      Roles: {
+        Row: {
+          roles: Database["public"]["Enums"]["role"][]
+          user_id: string
+        }
+        Insert: {
+          roles: Database["public"]["Enums"]["role"][]
+          user_id: string
+        }
+        Update: {
+          roles?: Database["public"]["Enums"]["role"][]
+          user_id?: string
+        }
+        Relationships: []
       }
       tag: {
         Row: {
@@ -535,45 +549,30 @@ export type Database = {
         Row: {
           country_id: number | null
           email: string | null
-          facebook: string | null
           first_name: string | null
           gender: Database["public"]["Enums"]["user_gender"] | null
-          github: string | null
-          instagram: string | null
           last_name: string | null
-          linkedin: string | null
           password: string | null
-          phone_number: string | null
           status: Database["public"]["Enums"]["user_status"] | null
           user_id: string
         }
         Insert: {
           country_id?: number | null
           email?: string | null
-          facebook?: string | null
           first_name?: string | null
           gender?: Database["public"]["Enums"]["user_gender"] | null
-          github?: string | null
-          instagram?: string | null
           last_name?: string | null
-          linkedin?: string | null
           password?: string | null
-          phone_number?: string | null
           status?: Database["public"]["Enums"]["user_status"] | null
           user_id: string
         }
         Update: {
           country_id?: number | null
           email?: string | null
-          facebook?: string | null
           first_name?: string | null
           gender?: Database["public"]["Enums"]["user_gender"] | null
-          github?: string | null
-          instagram?: string | null
           last_name?: string | null
-          linkedin?: string | null
           password?: string | null
-          phone_number?: string | null
           status?: Database["public"]["Enums"]["user_status"] | null
           user_id?: string
         }
@@ -599,10 +598,51 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      delete_claim: {
+        Args: {
+          uid: string
+          claim: string
+        }
+        Returns: string
+      }
+      get_claim: {
+        Args: {
+          uid: string
+          claim: string
+        }
+        Returns: Json
+      }
+      get_claims: {
+        Args: {
+          uid: string
+        }
+        Returns: Json
+      }
+      get_my_claim: {
+        Args: {
+          claim: string
+        }
+        Returns: Json
+      }
+      get_my_claims: {
+        Args: Record<PropertyKey, never>
+        Returns: Json
+      }
+      is_claims_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
+      set_claim: {
+        Args: {
+          uid: string
+          claim: string
+          value: Json
+        }
+        Returns: string
+      }
     }
     Enums: {
-      initiative_for_gender: "men" | "women" | "mix"
+      initiative_for_gender: "men" | "female" | "mix"
       initiative_status:
         | "announcement"
         | "preparing"
@@ -612,8 +652,9 @@ export type Database = {
         | "completed"
         | "postponed"
       notification_status: "read" | "unread"
-      task_initiative_status: "solved" | "unsolved" | "pending"
-      user_gender: "men" | "women"
+      role: "admin" | "supervisor" | "student"
+      task_initiative_status: "solve" | "unsolved" | "pending"
+      user_gender: "men" | "female"
       user_initiative_status: "pending" | "accepted" | "refused"
       user_status: "active" | "deactivate"
     }
@@ -702,3 +743,4 @@ export type Enums<
   : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
   ? Database["public"]["Enums"][PublicEnumNameOrOptions]
   : never
+

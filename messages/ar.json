@@ -47,13 +47,33 @@
     "back": "خلف",
     "next": "التالي",
     "go": "يذهب",
-    "register": "يسجل",
+    "register": "سجل",
     "create-your-account": "أنشئ حسابك",
+    "already-have-account": "لديك حساب بالفعل؟",
+    "click-here": "انقر هنا",
+    "enter-your-informations-below-to-create-your-account-0": " أدخل معلوماتك أدناه لإنشاء حسابك"
+  },
+  "login": {
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "email_label": "البريد الإلكتروني-0",
+    "password_label": "كلمة المرور",
+    "error_message_email": "لم يتم تقديم البريد الإلكتروني",
+    "error_message_password": "لم يتم تقديم كلمة المرور",
+    "submit": "إرسال",
+    "slogenPart1": "مصنع-",
+    "slogenPart2": "في مهمة لبناء مجتمع",
+    "initiativePart1": "المبادرة -",
+    "initiativePart2": "هذا هو المكان الذي يتخرج منه القادة",
+    "already-have-an-account": "هل لديك حساب؟",
+    "click-here-0": "انقر هنا",
+    "mbadrh": "نصائح-",
+    "hna-ytkhrj-alqadh": "هنا يتخرج للجميع",
+    "back": "بعودتك",
+    "welcome": "مرحباً",
     "already-have-account": "لديك حساب بالفعل؟",
     "click-here": "انقر هنا"
   },
-  "register": "يسجل",
-  "create-your-account": "أنشئ حسابك",
-  "already-have-account": "لديك حساب بالفعل؟",
-  "click-here": "انقر هنا"
+  "register": "سجل",
+  "create-your-account": "أنشئ حسابك"
 }

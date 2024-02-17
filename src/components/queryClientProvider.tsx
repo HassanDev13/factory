@@ -1,9 +1,15 @@
-'use client'
+"use client";
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from "react";
+import createClient from "../../utils/supabase/client";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-export const ReactQueryClientProvider = ({ children }: { children: React.ReactNode }) => {
+export const ReactQueryClientProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const supabase = createClient();
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -15,6 +21,36 @@ export const ReactQueryClientProvider = ({ children }: { children: React.ReactNo
         //   },
         // },
       })
-  )
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-}
+  );
+  useEffect(() => {
+    supabase
+      .channel("schema-db-changes")
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "Roles",
+        },
+        (payload) => supabase.auth.refreshSession()
+      )
+      .subscribe();
+
+    supabase
+      .channel("schema-db-changes")
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "Roles",
+        },
+        (payload) => supabase.auth.refreshSession()
+      )
+      .subscribe();
+  }, [supabase]);
+
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+};

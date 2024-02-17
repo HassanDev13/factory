@@ -32,18 +32,12 @@ INSERT INTO
             'authenticated',
             'authenticated',
             'user' || (ROW_NUMBER() OVER ()) || '@example.com',
-            crypt ('password123', gen_salt ('bf')),
+            crypt ('password', gen_salt ('bf')),
             current_timestamp,
             current_timestamp,
             current_timestamp,
             '{"provider":"email","providers":["email"]}',
-            jsonb_build_object(
-            'first_name', 'Reda',
-            'last_name', 'Taleb',
-            'email', 'user@example.com',
-            'gender', 'men',
-            'country_id', 1
-            ), 
+            '{}',
             current_timestamp,
             current_timestamp,
             '',
@@ -53,6 +47,7 @@ INSERT INTO
         FROM
             generate_series(1,3)
     );
+
 
 
 
@@ -81,11 +76,20 @@ INSERT INTO
             auth.users
     );
 
+ INSERT INTO public.roles (user_id,roles)
+    select 
+    id,
+    ARRAY['admin', 'supervisor', 'student']::role[]
+    from auth.users;
+
+
 INSERT INTO
     time_zone (zone)
 VALUES ('UTC'),
     ('GMT'),
     ('PST');
+--  admin', 'supervisor', 'student'
+
 
 -- Insert sample data into image table
 INSERT INTO

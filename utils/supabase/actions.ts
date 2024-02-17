@@ -21,3 +21,6 @@ export default function createClient(cookieStore: ReturnType<typeof cookies>) {
     }
   )
 }
+
+// const cookieStore = cookies()
+// const supabase = createClient(cookieStore)

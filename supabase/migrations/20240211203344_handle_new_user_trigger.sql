@@ -6,15 +6,11 @@ as
 $$
 begin
 	insert into
-	    public.users (user_id , first_name, last_name , email,gender,country_id)
+	    public.users (user_id , email)
 	values (
-	        new.id,
-            new.raw_user_meta_data ->> 'first_name',
-            new.raw_user_meta_data ->> 'last_name',
-            new.raw_user_meta_data ->> 'email',
-           CAST(new.raw_user_meta_data ->> 'gender' AS user_gender),
-            (NEW.raw_user_meta_data ->> 'country_id')::INT     
-	    );
+	        new.id,     
+            new.email
+	);
 	return new;
 end;
 $$

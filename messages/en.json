@@ -65,6 +65,30 @@
     "gender": "Gender",
     "last-name-0": "Last Name",
     "first-name-0": "First Name",
-    "confirm-password": "Confirm Password"
-  }
+    "confirm-password": "Confirm Password",
+    "enter-your-informations-below-to-create-your-account-0": "Enter your informations below to create your account."
+
+  },
+  "login": {
+    "email": "email",
+    "password": "password",
+    "email_label": "email-0",
+    "password_label": "password",
+    "error_message_email": "Email not provided",
+    "error_message_password": "Password not provided",
+    "submit": "Submit",
+    "slogenPart1": "Factory-",
+    "slogenPart2": "In a mission to build a community",
+    "initiativePart1": "Initiative-",
+    "initiativePart2": "This is where leaders graduate",
+    "hna-ytkhrj-alqadh": "هنا يتخرج القادة",
+    "mbadrh": "مبادرة-",
+    "click-here-0": "Click here",
+    "already-have-an-account": "Already have an account?",
+    "enter-your-email-below-to-create-your-account": "Enter your email below to create your account.",
+    "welcome": "Welcome",
+    "back": "back"
+  },
+  "this-is-where-leaders-graduate": "This is where leaders graduate",
+  "initiative": "Initiative -"
 }
