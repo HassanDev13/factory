@@ -65,9 +65,25 @@ export async function middleware(request: NextRequest) {
       request.nextUrl.pathname
     );
   console.log("pathname", request.nextUrl.pathname);
+
   if (!shouldHandle) return;
   const user = await supabase.auth.getSession();
   const redirectUrl = request.nextUrl.clone();
+  // check if users go to /logout so we can clear the session
+  console.log("pathname", pathname);
+  if (pathname.endsWith("/logout")) {
+    const {error} = await supabase.auth.signOut();
+    
+    if(
+      error
+    ){
+      console.log("error", error);
+    }
+    
+    // redirectUrl.pathname =`${language}/login`;
+    // return NextResponse.redirect(redirectUrl);
+  }
+ 
   // If the user is authenticated and the pathname is /login or /register, redirect to home
   if (
     user.data.session &&
