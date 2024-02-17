@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { createServerClient} from '@supabase/ssr'
 
-import { Cairo, Inter } from "next/font/google";
+import { Cairo, Inter, Tajawal } from "next/font/google";
 import "./globals.css";
 import { ReactQueryClientProvider } from "../../components/queryClientProvider";
 import useTextDirection from "@/components/useTextDirection";
 import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
-const cairo = Cairo({ subsets: ["latin"] });
+const cairo = Tajawal({weight : "400", subsets: ["arabic"] });
 export const metadata: Metadata = {
   title: "Factory",
   description: "In mission to build a community",

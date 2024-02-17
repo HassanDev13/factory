@@ -47,21 +47,26 @@ type content = {
 type Props = {
   params: {
     locale: string;
-    content: content; 
+    content: content;
   };
 };
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { set, z } from "zod";
 import { toast } from "@/components/ui/use-toast";
 import createClient from "../../../../../utils/supabase/client";
 import { Tables } from "../../../../../utils/database.types";
 import { useQuery } from "@tanstack/react-query";
 import useGetAllCountries from "../../../../../hooks/country/use-all-countries";
+import { useState } from "react";
 
 const Form1 = ({ params: { locale, content } }: Props) => {
   const client = createClient();
-  const { data: country, isLoading : countryLoading , isError } = useGetAllCountries();
+  const {
+    data: country,
+    isLoading: countryLoading,
+    isError,
+  } = useGetAllCountries();
   const formSchema = z.object({
     first_name: z.string().min(6, {
       message: content.error_message_first_name,
@@ -78,7 +83,7 @@ const Form1 = ({ params: { locale, content } }: Props) => {
       message: content.error_message_gender,
     }),
   });
-
+  const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -88,16 +93,17 @@ const Form1 = ({ params: { locale, content } }: Props) => {
       country: 1,
     },
   });
- 
+
   const router = useRouter();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-  
+
     const user = await client.auth.getUser();
     if (!user || user.data === null || user.data.user === null) {
       router.push(`/${locale}/register`);
     }
+    setLoading(true);
     const { data, error } = await client
       .from("users")
       .upsert({
@@ -108,6 +114,7 @@ const Form1 = ({ params: { locale, content } }: Props) => {
         user_id: user!.data!.user!.id,
       })
       .select("*");
+    setLoading(false);
 
     if (error) {
       toast({
@@ -122,6 +129,7 @@ const Form1 = ({ params: { locale, content } }: Props) => {
         title: "Success",
         description: "Register success",
       });
+      router.push(`/${locale}/dashboard`);
     }
   }
 
@@ -186,13 +194,11 @@ const Form1 = ({ params: { locale, content } }: Props) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-
                     {country?.map((c) => (
                       <SelectItem key={c.id} value={`${c.id}`}>
                         {c.name}
                       </SelectItem>
                     ))}
-                  
                   </SelectContent>
                 </Select>
 
@@ -233,7 +239,9 @@ const Form1 = ({ params: { locale, content } }: Props) => {
             type="submit"
             className="bg-[#0F172A] w-full md:w-32 hover:bg-[#FFE7C2] hover:text-[#0F172A]"
           >
-            <ReloadIcon className="mx-2 h-4 w-4 animate-spin  hover:text-[#0F172A]" />
+            {loading && (
+              <ReloadIcon className="mx-2 h-4 w-4 animate-spin  hover:text-[#0F172A]" />
+            )}
             {`${content.next}`}
           </Button>
         </div>

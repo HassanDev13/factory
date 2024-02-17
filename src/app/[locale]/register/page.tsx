@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import RegisterForm from "./form";
 
