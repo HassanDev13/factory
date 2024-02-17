@@ -5,8 +5,10 @@ import createClient from "../../../../utils/supabase/client";
 
 export function Logout() {
     const client = createClient();
-  const logout = () => {
-    client.auth.signOut();
+  const logout = async () => {
+    await client.auth.signOut();
+    // relesh page
+    window.location.reload();
   };
   return (
     <div className="">
