@@ -67,7 +67,6 @@
     "first-name-0": "First Name",
     "confirm-password": "Confirm Password",
     "enter-your-informations-below-to-create-your-account-0": "Enter your informations below to create your account."
-
   },
   "login": {
     "email": "email",
@@ -89,6 +88,14 @@
     "welcome": "Welcome",
     "back": "back"
   },
-  "this-is-where-leaders-graduate": "This is where leaders graduate",
-  "initiative": "Initiative -"
+  "definitions": {
+    "initiative": "Initiative -",
+    "teams": "Teams",
+    "tasks-tags": "Tasks tags",
+    "tasks-types": "Tasks types",
+    "initiatives-types": "Initiatives types",
+    "country": "country",
+    "time-zones": "time zones"
+
+  }
 }

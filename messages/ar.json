@@ -75,5 +75,14 @@
     "click-here": "انقر هنا"
   },
   "register": "سجل",
-  "create-your-account": "أنشئ حسابك"
+  "create-your-account": "أنشئ حسابك",
+  "definitions": {
+    "initiative": "المبادرة -",
+    "teams": "الفرق",
+    "tasks-tags": "علامات المهام",
+    "tasks-types": "أنواع المهام",
+    "initiatives-types": "أنواع المبادرات",
+    "country": "البلد",
+    "time-zones": "المناطق الزمنية"
+}
 }

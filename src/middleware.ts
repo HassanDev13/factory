@@ -69,23 +69,25 @@ export async function middleware(request: NextRequest) {
   const user = await supabase.auth.getSession();
   const redirectUrl = request.nextUrl.clone();
   // If the user is authenticated and the pathname is /login or /register, redirect to home
-  // if (user.data.session  && (pathname.endsWith('/login') || pathname.endsWith('/register'))) {
-  //   redirectUrl.pathname =`${language}/dashboard`;
-  //   return NextResponse.redirect(redirectUrl);
-  // }
-  // // If the user is not authenticated and the pathname is not /login or /register, redirect to /login
+  if (
+    user.data.session &&
+    (pathname.endsWith("/login") || pathname.endsWith("/register"))
+  ) {
+    redirectUrl.pathname = `${language}/dashboard`;
+    return NextResponse.redirect(redirectUrl);
+  }
+  // If the user is not authenticated and the pathname is not /login or /register, redirect to /login
 
-  // if (
-  //   !user.data.session &&
-  //   !pathname.endsWith("/login") &&
-  //   !pathname.endsWith("/register")
-  // ) {
-  //   //return NextResponse.redirect('/login')
+  if (
+    !user.data.session &&
+    !pathname.endsWith("/login") &&
+    !pathname.endsWith("/register")
+  ) {
+    //return NextResponse.redirect('/login')
 
-  //   redirectUrl.pathname =`${language}/login`;
-  //   return NextResponse.redirect(redirectUrl);
-
-  // }
+    redirectUrl.pathname = `${language}/login`;
+    return NextResponse.redirect(redirectUrl);
+  }
 
   return intlMiddleware(request);
 }
