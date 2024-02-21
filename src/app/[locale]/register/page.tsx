@@ -54,10 +54,8 @@ export default function Page({ params: { locale } }: Props) {
         />
         <Card className="border-none ">
           <CardHeader>
-            <CardTitle className="text-4xl ">Register</CardTitle>
-            <CardDescription className="">
-              Enter your informations below to create your account.
-            </CardDescription>
+            <CardTitle className="text-4xl ">{t('register')}</CardTitle>
+            <CardDescription className="">{t('enter-your-informations-below-to-create-your-account-0')} </CardDescription>
           </CardHeader>
           <CardContent>
             <RegisterForm

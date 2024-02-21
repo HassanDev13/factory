@@ -65,7 +65,9 @@
     "gender": "Gender",
     "last-name-0": "Last Name",
     "first-name-0": "First Name",
-    "confirm-password": "Confirm Password"
+    "confirm-password": "Confirm Password",
+    "enter-your-informations-below-to-create-your-account-0": "Enter your informations below to create your account."
+
   },
   "login": {
     "email": "email",
@@ -85,7 +87,8 @@
     "already-have-an-account": "Already have an account?",
     "enter-your-email-below-to-create-your-account": "Enter your email below to create your account.",
     "welcome": "Welcome",
-     "back": "back"
-  }
-  
+    "back": "back"
+  },
+  "this-is-where-leaders-graduate": "This is where leaders graduate",
+  "initiative": "Initiative -"
 }

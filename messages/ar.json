@@ -47,10 +47,11 @@
     "back": "خلف",
     "next": "التالي",
     "go": "يذهب",
-    "register": "يسجل",
+    "register": "سجل",
     "create-your-account": "أنشئ حسابك",
     "already-have-account": "لديك حساب بالفعل؟",
-    "click-here": "انقر هنا"
+    "click-here": "انقر هنا",
+    "enter-your-informations-below-to-create-your-account-0": " أدخل معلوماتك أدناه لإنشاء حسابك"
   },
   "login": {
     "email": "البريد الإلكتروني",
@@ -73,6 +74,6 @@
     "already-have-account": "لديك حساب بالفعل؟",
     "click-here": "انقر هنا"
   },
-  "register": "يسجل",
+  "register": "سجل",
   "create-your-account": "أنشئ حسابك"
 }

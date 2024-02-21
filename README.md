@@ -1,6 +1,8 @@
-![1](https://github.com/HassanDev13/factory/assets/48941486/21a1f449-b756-4c1a-b5d3-ff4ab63da73b)
-![2](https://github.com/HassanDev13/factory/assets/48941486/61271a77-2ab1-46aa-882c-4b6279ed5be0)
+![1](https://github.com/HassanDev13/factory/assets/48941486/8304ba0b-af52-4d36-8fee-8dd95901aee4)
+![2](https://github.com/HassanDev13/factory/assets/48941486/5b63a9b4-e544-4def-8b35-8ee66ce4014d)
+
 # How to start the project
+
 
 open the project and run
 
@@ -47,3 +49,5 @@ pnpm supabase stop
 Resources
 
 [Local Development | Supabase Docs](https://supabase.com/docs/guides/cli/local-development)
+
+
