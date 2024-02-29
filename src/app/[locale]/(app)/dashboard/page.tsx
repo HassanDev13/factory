@@ -18,25 +18,21 @@ const Dashboard = () => {
       icon: UsersIcon,
       value: "2000",
       title: t("number-of-students"),
-      link: "#",
     },
     {
       icon: UsersIcon,
       value: "100",
       title: t("number-of-supervisors"),
-      link: "#",
     },
     {
       icon: ShapesIcon,
       value: "13",
       title: t("number-of-initiatives"),
-      link: "#",
     },
     {
       icon: CheckCircle,
       value: "2700",
       title: t("number-of-tasks"),
-      link: "#",
     },
   ];
 
@@ -69,24 +65,22 @@ const Dashboard = () => {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-2 h-screen ml-[3%] md:ml-0">
       {cards.map((card, index) => (
         <div key={index} className="md:col-span-1">
-          <Link href={card.link} key={index}>
-            <Card className="bg-costum-cream text-dark-blue">
-              <CardContent className="flex flex-col justify-center items-start p-4">
-                <div>
-                  <card.icon />
-                </div>
-                <div className="font-bold text-5xl"> {card.value}</div>
-                <div> {card.title}</div>
-              </CardContent>
-            </Card>
-          </Link>
+          <Card className="bg-costum-cream text-dark-blue">
+            <CardContent className="flex flex-col justify-center items-start p-4">
+              <div>
+                <card.icon />
+              </div>
+              <div className="font-bold text-5xl"> {card.value}</div>
+              <div> {card.title}</div>
+            </CardContent>
+          </Card>
         </div>
       ))}
 
       <div className="col-span-2 md:col-span-2 ">
         <Card className="bg-white h-full overflow-y-auto scrollbar rounded-3xl scrollbar-thumb-dark-blue scrollbar-track-gray-200">
           <h2 className="p-4">{t("top-teams")}</h2>
-          <CardContent className="max-h-[calc(100vh-220px)] ">
+          <CardContent className="md:max-h-[calc(100vh-220px)] ">
             <div className="">
               {topTeams.map((team, index) => (
                 <div
@@ -112,7 +106,7 @@ const Dashboard = () => {
       <div className="col-span-2 md:col-span-2 ">
         <Card className="bg-white h-full overflow-y-auto scrollbar-thin  scrollbar-thumb-dark-blue scrollbar-track-gray-200">
           <h2 className="p-4">{t("top-students")}</h2>
-          <CardContent className="max-h-[calc(100vh-220px)] ">
+          <CardContent className="md:max-h-[calc(100vh-220px)] ">
             <div className="">
               {topStudents.map((student, index) => (
                 <div
