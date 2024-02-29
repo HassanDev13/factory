@@ -1,115 +1,145 @@
-import Image from "next/image";
+import React from "react";
 import { useTranslations } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  CheckCircle,
+  ShapesIcon,
+  UsersIcon,
+  CrownIcon,
+  AwardIcon,
+} from "lucide-react";
+import { Link } from "@/config/navigation";
 
-type Props = {
-  params: { locale: string };
-};
+const Dashboard = () => {
+  const t = useTranslations("dashboard");
 
-export default function Home({ params: { locale } }: Props) {
-  unstable_setRequestLocale(locale);
-  const t = useTranslations();
+  const cards = [
+    {
+      icon: UsersIcon,
+      value: "2000",
+      title: t("number-of-students"),
+      link: "#",
+    },
+    {
+      icon: UsersIcon,
+      value: "100",
+      title: t("number-of-supervisors"),
+      link: "#",
+    },
+    {
+      icon: ShapesIcon,
+      value: "13",
+      title: t("number-of-initiatives"),
+      link: "#",
+    },
+    {
+      icon: CheckCircle,
+      value: "2700",
+      title: t("number-of-tasks"),
+      link: "#",
+    },
+  ];
+
+  const topTeams = [
+    { icon: AwardIcon, name: "team 1", rank: 1, points: 3000 },
+    { icon: AwardIcon, name: "team 2", rank: 2, points: 2109 },
+    { icon: AwardIcon, name: "team 3", rank: 3, points: 409 },
+    { icon: AwardIcon, name: "team 4", rank: 4, points: 200 },
+    { icon: AwardIcon, name: "team 5", rank: 5, points: 100 },
+    { icon: AwardIcon, name: "team 6", rank: 6, points: 99 },
+    { icon: AwardIcon, name: "team 7", rank: 7, points: 99 },
+  ];
+
+  const topStudents = [
+    { icon: CrownIcon, name: "student 1", rank: 1, points: 3000 },
+    { icon: CrownIcon, name: "student 2", rank: 2, points: 2109 },
+    { icon: CrownIcon, name: "student 3", rank: 3, points: 1999 },
+    { icon: CrownIcon, name: "student 4", rank: 4, points: 819 },
+    { icon: CrownIcon, name: "student 5", rank: 5, points: 687 },
+    { icon: CrownIcon, name: "student 6", rank: 6, points: 565 },
+    { icon: CrownIcon, name: "student 7", rank: 7, points: 543 },
+    { icon: CrownIcon, name: "student 8", rank: 8, points: 522 },
+    { icon: CrownIcon, name: "student 9", rank: 9, points: 412 },
+    { icon: CrownIcon, name: "student 10", rank: 10, points: 401 },
+    { icon: CrownIcon, name: "student 11", rank: 11, points: 300 },
+    { icon: CrownIcon, name: "student 12", rank: 12, points: 200 },
+  ];
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          {t('Index.body.get-started-by-editing-and-nbsp')}
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel={t('Index.body.noopener-noreferrer')}
-          >
-            {t('Index.body.by')}{" "}
-         <p>Our APP</p>
-          </a>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-2 h-screen ml-[3%] md:ml-0">
+      {cards.map((card, index) => (
+        <div key={index} className="md:col-span-1">
+          <Link href={card.link} key={index}>
+            <Card className="bg-costum-cream text-dark-blue">
+              <CardContent className="flex flex-col justify-center items-start p-4">
+                <div>
+                  <card.icon />
+                </div>
+                <div className="font-bold text-5xl"> {card.value}</div>
+                <div> {card.title}</div>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
+      ))}
+
+      <div className="col-span-2 md:col-span-2 ">
+        <Card className="bg-white h-full overflow-y-auto scrollbar rounded-3xl scrollbar-thumb-dark-blue scrollbar-track-gray-200">
+          <h2 className="p-4">{t("top-teams")}</h2>
+          <CardContent className="max-h-[calc(100vh-220px)] ">
+            <div className="">
+              {topTeams.map((team, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between bg-costum-cream mb-2 p-3 rounded-xl"
+                >
+                  <span className="font-bold text-lg flex items-center">
+                    <span>
+                      {team.rank <= 3 ? <team.icon /> : `#${team.rank}`}
+                    </span>
+                    <span className="mx-2 font-normal">{team.name}</span>
+                  </span>
+                  <span className="font-bold">
+                    {team.points} {t("points")}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt={t('Index.body.next-js-logo')}
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="col-span-2 md:col-span-2 ">
+        <Card className="bg-white h-full overflow-y-auto scrollbar-thin  scrollbar-thumb-dark-blue scrollbar-track-gray-200">
+          <h2 className="p-4">{t("top-students")}</h2>
+          <CardContent className="max-h-[calc(100vh-220px)] ">
+            <div className="">
+              {topStudents.map((student, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between bg-costum-cream mb-2 p-3 rounded-xl"
+                >
+                  <span className="font-bold text-lg flex items-center">
+                    <span>
+                      {student.rank <= 3 ? (
+                        <student.icon />
+                      ) : (
+                        `#${student.rank}`
+                      )}
+                    </span>
+                    <span className="mx-2 font-normal">{student.name}</span>
+                  </span>
+                  <span className="font-bold">
+                    {student.points} {t("points")}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
-
-      <div className="mb-32 grid  lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 ">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel={t('Index.body.noopener-noreferrer-0')}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            {t('Index.body.find-in-depth-information-about-next-js-features-and-api')}
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel={t('Index.body.noopener-noreferrer-1')}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            {t('Index.body.learn')}{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            {t('Index.body.learn-about-next-js-in-an-interactive-course-with-and-nbsp-quizzes')}
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel={t('Index.body.noopener-noreferrer-2')}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            {t('Index.body.templates')}{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            {t('Index.body.explore-starter-templates-for-next-js')}
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel={t('Index.body.noopener-noreferrer-3')}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            {t('Index.body.deploy')}{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            {t('Index.body.instantly-deploy-your-next-js-site-to-a-shareable-url-with-vercel')}
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default Dashboard;

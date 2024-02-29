@@ -84,5 +84,22 @@
     "initiatives-types": "أنواع المبادرات",
     "country": "البلد",
     "time-zones": "المناطق الزمنية"
-}
+},
+"dashboard": {
+    "top-students": "#الطلاب الأوائل",
+    "top-teams": "#الفرق الأوائل",
+    "student-3-0": "الطالب 3",
+    "student-3": "الطالب 3",
+    "student-2": "الطالب 2",
+    "student-1": "الطالب 1",
+    "team-4": "الفريق 4",
+    "team-3": "الفريق 3",
+    "team-2": "الفريق 2",
+    "team-1": "الفريق 1",
+    "number-of-tasks": "عدد المهام",
+    "number-of-initiatives": "عدد المبادرات",
+    "number-of-supervisors": "عدد المشرفين",
+    "number-of-students": "عدد الطلاب",
+    "points": "نقطة"
+  }
 }
