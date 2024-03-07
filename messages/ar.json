@@ -101,5 +101,14 @@
     "number-of-supervisors": "عدد المشرفين",
     "number-of-students": "عدد الطلاب",
     "points": "نقطة"
-  }
+  },
+  
+  "calendar": {
+    "tasks": "المهام",
+    "create-new-task": "إنشاء مهمة جديدة",
+    "all-scheduled-tasks": "جميع المهام المجدولة",
+    "calendar": "التقويم",
+    "submit": "إرسال"
+  
+}
 }
