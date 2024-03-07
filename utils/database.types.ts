@@ -14,29 +14,18 @@ export interface Database {
           id: number
           name: string | null
           soft_delete: boolean | null
-          user_id: string | null
         }
         Insert: {
           id?: number
           name?: string | null
           soft_delete?: boolean | null
-          user_id?: string | null
         }
         Update: {
           id?: number
           name?: string | null
           soft_delete?: boolean | null
-          user_id?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "country_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["user_id"]
-          }
-        ]
+        Relationships: []
       }
       image: {
         Row: {
@@ -234,20 +223,31 @@ export interface Database {
           }
         ]
       }
-      Roles: {
+      roles: {
         Row: {
+          id: string
           roles: Database["public"]["Enums"]["role"][]
           user_id: string
         }
         Insert: {
+          id?: string
           roles: Database["public"]["Enums"]["role"][]
           user_id: string
         }
         Update: {
+          id?: string
           roles?: Database["public"]["Enums"]["role"][]
           user_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "roles_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       tag: {
         Row: {
@@ -547,41 +547,51 @@ export interface Database {
       }
       users: {
         Row: {
-          country_id: number | null
+          country: number | null
           email: string | null
           first_name: string | null
           gender: Database["public"]["Enums"]["user_gender"] | null
           last_name: string | null
           password: string | null
+          role_id: string | null
           status: Database["public"]["Enums"]["user_status"] | null
           user_id: string
         }
         Insert: {
-          country_id?: number | null
+          country?: number | null
           email?: string | null
           first_name?: string | null
           gender?: Database["public"]["Enums"]["user_gender"] | null
           last_name?: string | null
           password?: string | null
+          role_id?: string | null
           status?: Database["public"]["Enums"]["user_status"] | null
           user_id: string
         }
         Update: {
-          country_id?: number | null
+          country?: number | null
           email?: string | null
           first_name?: string | null
           gender?: Database["public"]["Enums"]["user_gender"] | null
           last_name?: string | null
           password?: string | null
+          role_id?: string | null
           status?: Database["public"]["Enums"]["user_status"] | null
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "users_country_id_fkey"
-            columns: ["country_id"]
+            foreignKeyName: "users_country_fkey"
+            columns: ["country"]
             isOneToOne: false
             referencedRelation: "country"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "users_role_id_fkey"
+            columns: ["role_id"]
+            isOneToOne: false
+            referencedRelation: "roles"
             referencedColumns: ["id"]
           },
           {

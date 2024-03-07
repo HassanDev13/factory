@@ -25,7 +25,7 @@ export default function RootLayout({
       <div className="flex">
         <SideBar params={{ locale }} className="border-e-2  md:w-48 hidden md:flex md:h-screen fixed   bg-background " />
         <div className="flex flex-col md:ms-48 flex-grow ">
-          <NavBar params={{ locale }} className=" fixed start-0 top-0 end-0 md:ms-48 flex flex-grow justify-between  p-2 items-center border-b-2 h-14  bg-background  " />
+          <NavBar params={{ locale }} className=" fixed start-0 top-0 end-0 md:ms-48 flex flex-grow justify-between  p-2 items-center border-b-2 h-14  bg-background z-10 " />
           <main className="mt-14">{children}</main>
         </div>
       </div>
