@@ -5,4 +5,4 @@ CREATE TYPE user_gender AS ENUM ('men', 'female');
 CREATE TYPE user_initiative_status AS ENUM ('pending', 'accepted', 'refused');
 CREATE TYPE user_status AS ENUM ('active', 'deactivate');
 CREATE TYPE notification_status AS ENUM ('read', 'unread');
-create type "public"."role" as enum ('admin', 'supervisor', 'student');
+create TYPE role as ENUM ('admin', 'supervisor', 'student');

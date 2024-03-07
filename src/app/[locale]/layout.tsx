@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { createServerClient} from '@supabase/ssr'
 
-import { Cairo, Inter, Tajawal } from "next/font/google";
+import { Inter, Tajawal } from "next/font/google";
 import "./globals.css";
 import { ReactQueryClientProvider } from "../../components/queryClientProvider";
 import useTextDirection from "@/components/useTextDirection";

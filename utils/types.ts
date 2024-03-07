@@ -26,9 +26,9 @@ export type TimeZone = Row<'time_zone'>;
 export type TimeZoneInsertDto = InsertDto<'time_zone'>;
 export type TimeZoneUpdateDto = UpdateDto<'time_zone'>;
 
-export type Roles = Row<'Roles'>;
-export type RolesInsertDto = InsertDto<'Roles'>;
-export type RolesUpdateDto = UpdateDto<'Roles'>;
+export type Roles = Row<'roles'>;
+export type RolesInsertDto = InsertDto<'roles'>;
+export type RolesUpdateDto = UpdateDto<'roles'>;
 
 export type Image = Row<'image'>;
 export type ImageInsertDto = InsertDto<'image'>;
@@ -82,3 +82,4 @@ export type UserGender = Enum<'user_gender'>;
 export type UserInitiativeStatus = Enum<'user_initiative_status'>;
 export type UserStatus = Enum<'user_status'>;
 export type NotificationStatus = Enum<'notification_status'>;
+

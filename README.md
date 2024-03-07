@@ -27,7 +27,7 @@ then you will see
 then create env.local file and replace it with your own
 
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=*****DB URL HERE******
+NEXT_PUBLIC_SUPABASE_URL=*****API URL HERE******
 
 NEXT_PUBLIC_SUPABASE_ANON_KEY=*****ANON KEY HERE*****
 ```

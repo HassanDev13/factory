@@ -6,7 +6,7 @@ CREATE TABLE users (
     password VARCHAR(255),
     gender user_gender,
     status user_status DEFAULT 'active',
-    country_id INT REFERENCES country(id),
+    country INT REFERENCES country(id),
     primary key (user_id)
 );
-ALTER TABLE country ADD COLUMN user_id uuid REFERENCES users(user_id);
+
