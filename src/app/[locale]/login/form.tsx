@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ReloadIcon } from "@radix-ui/react-icons";
 
 // Define the shape of the login form data
 const LoginFormSchema = z.object({
@@ -45,16 +44,16 @@ const LoginForm = ({ params: { locale, content } }: Props) => {
   const form = useForm<z.infer<typeof LoginFormSchema>>({
     resolver: zodResolver(LoginFormSchema),
     defaultValues: {
-      email: "example@gmail.com",
-      password: "12345678   ",
+      email: "user1@example.com",
+      password: "password",
     },
   });
 
   const router = useRouter();
 
   async function onSubmit(values: z.infer<typeof LoginFormSchema>) {
-  const client = createClient();
- 
+    const client = createClient();
+
     const { data, error } = await client.auth.signInWithPassword({
       email: values.email,
       password: values.password,
@@ -74,13 +73,8 @@ const LoginForm = ({ params: { locale, content } }: Props) => {
         description: "SignIn success",
       });
       router.push(`/${locale}/dashboard`);
-
     }
-
-    
-
-}
-
+  }
 
   return (
     <Form {...form}>

@@ -100,18 +100,16 @@
   "dashboard": {
     "top-students": "#Top Students",
     "top-teams": "#Top Teams",
-    "student-3-0": "Student 3",
-    "student-3": "Student 3",
-    "student-2": "Student 2",
-    "student-1": "Student 1",
-    "team-4": "Team 4",
-    "team-3": "Team 3",
-    "team-2": "Team 2",
-    "team-1": "Team 1",
     "number-of-tasks": "number of Tasks",
     "number-of-initiatives": "number of initiatives",
     "number-of-supervisors": "number of supervisors",
     "number-of-students": "number of students",
     "points": "points"
-  }
+  },
+  "calendar": {
+    "tasks": "Tasks",
+    "create-new-task": "Create New Task",
+    "all-scheduled-tasks": "All Scheduled Tasks",
+    "calendar": "Calendar",
+    "submit" :"Submit"  }
 }
