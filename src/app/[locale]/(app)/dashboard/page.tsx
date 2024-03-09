@@ -62,7 +62,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-2 h-screen ml-[3%] md:ml-0">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-2 h-full md:ml-0 ">
       {cards.map((card, index) => (
         <div key={index} className="md:col-span-1">
           <Card className="bg-costum-cream text-dark-blue">
@@ -78,9 +78,9 @@ const Dashboard = () => {
       ))}
 
       <div className="col-span-2 md:col-span-2 ">
-        <Card className="bg-white h-full overflow-y-auto scrollbar rounded-3xl scrollbar-thumb-dark-blue scrollbar-track-gray-200">
+        <Card className="bg-white flex-grow overflow-y-auto scrollbar rounded-3xl scrollbar-thumb-dark-blue scrollbar-track-gray-200">
           <h2 className="p-4">{t("top-teams")}</h2>
-          <CardContent className="md:max-h-[calc(100vh-220px)] ">
+          <CardContent className="md:max-h-full">
             <div className="">
               {topTeams.map((team, index) => (
                 <div
@@ -104,9 +104,9 @@ const Dashboard = () => {
       </div>
 
       <div className="col-span-2 md:col-span-2 ">
-        <Card className="bg-white h-full overflow-y-auto scrollbar-thin  scrollbar-thumb-dark-blue scrollbar-track-gray-200">
+        <Card className="bg-white flex-grow overflow-y-auto scrollbar-thin  scrollbar-thumb-dark-blue scrollbar-track-gray-200">
           <h2 className="p-4">{t("top-students")}</h2>
-          <CardContent className="md:max-h-[calc(100vh-220px)] ">
+          <CardContent className="md:max-h-full ">
             <div className="">
               {topStudents.map((student, index) => (
                 <div

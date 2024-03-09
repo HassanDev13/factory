@@ -1,6 +1,4 @@
 import { db } from "../../../../db/db";
-import { country } from "../../../../db/schema/country";
-import { users } from "../../../../db/schema/users";
 
 export async function GET(request: Request) {
   try {

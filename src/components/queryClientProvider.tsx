@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import createClient from "../../utils/supabase/client";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { TRPCReactProvider } from "../../utils/trpc/client";
 
 export const ReactQueryClientProvider = ({
   children,
@@ -51,6 +52,8 @@ export const ReactQueryClientProvider = ({
   }, [supabase]);
 
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <TRPCReactProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </TRPCReactProvider>
   );
 };
